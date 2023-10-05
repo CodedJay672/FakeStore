@@ -3,25 +3,31 @@ import {
   Form,
   useNavigate,
   redirect,
+  NavLink,
+  useActionData,
+  useOutletContext
 } from "react-router-dom";
 import { login } from "../utils/routeFunctions";
+import { userContext } from "./App";
+import './Auth.css';
 
-export async function action({request}) {
-  event.preventDefault();
-  const { email, password } = request.body;
-  const user = await login({ email, password });
-  if (!user) {
-    throw new Error('Oops! Something went wrong');
+export async function action({ request }) {
+  const formData = await request.formData();
+  const object = Object.fromEntries(formData);
+  try {
+    const token = await login(object);
+    return token;
+  } catch (error) {
+    return redirect('/login');
   }
-  sessionStorage.setItem('user', user);
-  redirect('/'); // redirect to home page
 }
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const token = useActionData();
+  const { signIn } = useOutletContext(userContext);
   const navigate = useNavigate();
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   }
@@ -34,30 +40,39 @@ export default function Login() {
     navigate(-1);
   }
 
+  const handleSubmit = (token) => {
+    signIn(token);
+    navigate('/');
+  }
+  
   return (
-    <div>
-      <Form action="../utils/routeFunction" method="POST">
-        <label htmlFor="email">Email:</label>
+    <div className="loginForm">
+      <h1>Login</h1>
+      <Form method="post" onSubmit={() => handleSubmit(token)}>
         <input
           type="text"
           id="email"
           name="email"
           onChange={handleEmailChange}
           value={email}
+          placeholder="Email"
           required
         />
-        <label htmlFor="password">Password:</label>
         <input
           type="password"
           id="password"
           name="password"
           onChange={handlePasswordChange}
           value={password}
+          placeholder="Password"
           required
         />
-        <input type="submit" value="Submit" />
-        <input type="button" onClick={cancelLogin} value="Cancel" />
+        <div className="cta">
+          <button type="submit">Login</button>
+          <button type="button" onClick={cancelLogin}>Cancel</button>
+        </div>
       </Form>
+      <p>Don't have an account? click <NavLink to="/signup">Here</NavLink> to create an account</p>
     </div>
   );
 }

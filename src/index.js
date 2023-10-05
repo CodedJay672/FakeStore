@@ -1,30 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./Routes/home";
 import {
-  createHashRouter as Router,
+  createBrowserRouter as Router,
   RouterProvider
 } from "react-router-dom";
-import { loader as rootLoader } from "./Routes/home";
 import ErrorPage from "./Components/ErrorPage";
 import Login from "./Routes/Auth";
 import { action as loginAction} from "./Routes/Auth";
+import App from "./Routes/App";
+import SignUp from "./Routes/SignUp";
+import Index, { loader as indexLoader } from "./Routes/Index";
 
 
  // create a router to load the webpages
  const router = Router([
   {
     path: '/',
-    element: <Home />,
+    element: <App />,
     errorElement: <ErrorPage />,
-    loader: rootLoader
+    children: [
+      {
+        index: true,
+        element: <Index />,
+        loader: indexLoader,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+        action: loginAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
+        errorElement: <ErrorPage />
+      }
+    ]
   },
-  {
-    path: '/login',
-    element: <Login />,
-    action: loginAction,
-    errorElement: <ErrorPage />
-  }
  ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

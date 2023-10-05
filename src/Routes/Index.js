@@ -1,10 +1,9 @@
-import React, { useState, createContext } from "react";
+import React from "react";
 import Slider from 'react-slick';
 import { useLoaderData } from "react-router-dom";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { heroCarousel } from "../utils/routeFunctions";
-import ResponsiveAppBar from "../Components/Header";
 import Container from "@mui/material/Container";
 import "./Home.css";
 
@@ -18,21 +17,9 @@ export async function loader() {
   return products;
 }
 
-export const userContext = createContext(null);
-
-export default function Home() {
+export default function Index() {
   const data = useLoaderData();
-  const [user, setUser] = useState(sessionStorage.getItem('user') || null);
-  const signIn = () => {
-    setUser('user');
-    sessionStorage.setItem('user', user);
-  }
-
-  const signOut = () => {
-    setUser(null);
-    sessionStorage.removeItem('user');
-  }
-
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -69,21 +56,18 @@ export default function Home() {
       }
     ]
   }
-
+  
   return (
-    <userContext.Provider value={{user, signIn, signOut}}>
-      <ResponsiveAppBar />
-      <Container maxWidth="xl">
-        <Slider {...settings}>
-          {data.map((product) => {
-            return (
-              <div key={product.id} className="carousel">
-                <img src={product.image} alt={product.title} />
-              </div>
-            )
-          })}
-        </Slider>
-      </Container>
-    </userContext.Provider>
-  );
+    <Container maxWidth="xl">
+      <Slider {...settings}>
+        {data.map((product) => {
+          return (
+            <div key={product.id} className="carousel">
+              <img src={product.image} alt={product.title} />
+            </div>
+          )
+        })}
+      </Slider>
+    </Container>
+  )
 }

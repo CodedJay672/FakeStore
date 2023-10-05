@@ -14,14 +14,11 @@ export async function heroCarousel() {
   return response.data;
 }
 
-export async function login({ email, password }) {
-  const response = await client.post("/auth/login", {
-    email,
-    password
-  });
+export async function login(object) {
+  const response = await client.post("/auth/login", object);
   if (!response) {
     return null;
   }
 
-  return response.data;
+  sessionStorage.setItem('token', response.data.token);
 }

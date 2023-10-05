@@ -13,15 +13,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { NavLink } from "react-router-dom";
-import { userContext } from "../Routes/home";
 
 const pages = ['home', 'categories', 'about', 'contact'];
-const settings = ['Profile', 'Account', 'Logout'];
+const settings = ['Profile', 'Account', 'LogIn'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const { user, signOut } = useContext(userContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -101,7 +99,7 @@ function ResponsiveAppBar() {
           </Box>
           <AddShoppingCartIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant="p"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -133,8 +131,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                {user ? <NavLink to="/" onclick={signOut}>signOut</NavLink> : <NavLink to="/login">signIn</NavLink>}
+                <Avatar alt="Remy Sharp" src="" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -155,7 +152,9 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center">
+                    <NavLink to={"/"+setting.toLowerCase()}>{setting}</NavLink>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

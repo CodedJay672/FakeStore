@@ -1,0 +1,44 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90dvh;
+}
+
+.loginForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm form input {
+  display: block;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 60vw;
+}
+
+.loginForm form .cta {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.loginForm form button {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 45%;
+}
+
+@media screen and (min-width: 768px) {
+  .loginForm form input {
+    width: 30vw;
+  }
+}
