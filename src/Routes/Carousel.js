@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { heroCarousel } from "../utils/routeFunctions";
 import Container from "@mui/material/Container";
 import "./Home.css";
+import Products from "../Components/Products";
 
 // loader function loads the data we need in the home page
 export async function loader() {
@@ -58,6 +59,7 @@ export default function Carousel() {
   }
   
   return (
+    <>
     <Container maxWidth="xl">
       <Slider {...settings}>
         {data.map((product) => {
@@ -69,5 +71,9 @@ export default function Carousel() {
         })}
       </Slider>
     </Container>
+    <div id="products">
+      <Products />
+    </div>
+    </>
   )
 }

@@ -16,7 +16,7 @@ export async function action({ request }) {
     sessionStorage.setItem('storeUser', token);
     return redirect('/');
   } catch (error) {
-    consol.log(error);
+    console.log(error);
   }
 }
 

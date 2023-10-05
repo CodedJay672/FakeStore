@@ -5,3 +5,12 @@
   overflow: hidden;
   object-fit:contain;
 }
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
