@@ -6,6 +6,16 @@
 }
 
 .product img {
-  width: 100%;
+  width: 80%;
   object-fit: contain;
+}
+
+@media screen and (min-width: 760px) {
+  .product {
+    width: 20vw;
+  }
+  
+  .product img {
+    width: 20%;
+  }
 }
