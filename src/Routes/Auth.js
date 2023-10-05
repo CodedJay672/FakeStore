@@ -16,7 +16,9 @@ export async function action({ request }) {
   const object = Object.fromEntries(formData);
   try {
     const token = await login(object);
-    return token;
+    if (token) {
+      return token;
+    }
   } catch (error) {
     return redirect('/login');
   }
