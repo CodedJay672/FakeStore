@@ -1,0 +1,7 @@
+.carousel img {
+  width: 70dvw;
+  height: 70dvh;
+  margin: 5px auto;
+  overflow: hidden;
+  object-fit:contain;
+}
