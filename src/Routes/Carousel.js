@@ -59,7 +59,6 @@ export default function Carousel() {
   }
   
   return (
-    <>
     <Container maxWidth="xl">
       <Slider {...settings}>
         {data.map((product) => {
@@ -70,10 +69,9 @@ export default function Carousel() {
           )
         })}
       </Slider>
+      <div id="products">
+        <Products />
+      </div>
     </Container>
-    <div id="products">
-      <Products />
-    </div>
-    </>
   )
 }
