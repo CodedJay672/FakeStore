@@ -9,7 +9,7 @@ import Login from "./Routes/Auth";
 import { action as loginAction} from "./Routes/Auth";
 import App from "./Routes/App";
 import SignUp from "./Routes/SignUp";
-import Index, { loader as indexLoader } from "./Routes/Index";
+import Carousel, { loader as indexLoader } from "./Routes/Carousel";
 
 
  // create a router to load the webpages
@@ -21,7 +21,7 @@ import Index, { loader as indexLoader } from "./Routes/Index";
     children: [
       {
         index: true,
-        element: <Index />,
+        element: <Carousel />,
         loader: indexLoader,
       },
       {

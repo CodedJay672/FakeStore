@@ -17,7 +17,7 @@ export async function loader() {
   return products;
 }
 
-export default function Index() {
+export default function Carousel() {
   const data = useLoaderData();
   
   const settings = {

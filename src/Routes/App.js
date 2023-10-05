@@ -1,15 +1,13 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import ResponsiveAppBar from "../Components/Header";
 
-export const userContext = createContext(null);
-
 export default function Home() {
-  const [user, setUser] = useState(sessionStorage.getItem('storeUser') ? JSON.parse(sessionStorage.getItem('storeUser')) : null);
+  const [user, setUser] = useState(sessionStorage.getItem('storeUser') ? sessionStorage.getItem('storeUser') : null);
   
   const signIn = (prop) => {
     setUser(prop);
-    sessionStorage.setItem('storeUser', JSON.stringify(prop));
+    sessionStorage.setItem('storeUser', prop);
   }
 
   const signOut = () => {

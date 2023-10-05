@@ -4,11 +4,8 @@ import {
   useNavigate,
   redirect,
   NavLink,
-  useActionData,
-  useOutletContext
 } from "react-router-dom";
 import { login } from "../utils/routeFunctions";
-import { userContext } from "./App";
 import './Auth.css';
 
 export async function action({ request }) {
@@ -16,20 +13,18 @@ export async function action({ request }) {
   const object = Object.fromEntries(formData);
   try {
     const token = await login(object);
-    if (token) {
-      return token;
-    }
+    sessionStorage.setItem('storeUser', token);
+    return redirect('/');
   } catch (error) {
-    return redirect('/login');
+    consol.log(error);
   }
 }
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const token = useActionData();
-  const { signIn } = useOutletContext(userContext);
   const navigate = useNavigate();
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   }
@@ -42,15 +37,10 @@ export default function Login() {
     navigate(-1);
   }
 
-  const handleSubmit = (token) => {
-    signIn(token);
-    navigate('/');
-  }
-  
   return (
     <div className="loginForm">
       <h1>Login</h1>
-      <Form method="post" onSubmit={() => handleSubmit(token)}>
+      <Form method="post">
         <input
           type="text"
           id="email"
