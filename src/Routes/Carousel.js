@@ -7,6 +7,7 @@ import { heroCarousel } from "../utils/routeFunctions";
 import Container from "@mui/material/Container";
 import "./Home.css";
 import Products from "../Components/Products";
+import Footer from "../Components/Footer";
 
 // loader function loads the data we need in the home page
 export async function loader() {
@@ -59,6 +60,7 @@ export default function Carousel() {
   }
   
   return (
+    <>
     <Container maxWidth="xl">
       <Slider {...settings}>
         {data.map((product) => {
@@ -69,9 +71,9 @@ export default function Carousel() {
           )
         })}
       </Slider>
-      <div id="products">
-        <Products />
-      </div>
     </Container>
+    <Products />
+    <Footer />
+    </>
   )
 }

@@ -14,18 +14,17 @@ export default function Products() {
   }, []);
 
   if (!products) {
-    return null;
+    return <p>Loading Please wait...</p>;
   }
 
   return (
-    <div>
+    <div className="products">
       {products.map((product) => {
         return (
           <div key={product.id} className="product">
             <img src={product.image} alt={product.title} />
             <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <p><span>{product.category}</span> ${product.price}</p>
           </div>
         )
       })}
