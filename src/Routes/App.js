@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <ResponsiveAppBar />
       <div id="details">
-        <Outlet context={{user, signIn, signOut}}/>
+        <Outlet context={{user, signIn, signOut}} />
       </div>
     </>
   );

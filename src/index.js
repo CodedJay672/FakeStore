@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import ErrorPage from "./Components/ErrorPage";
 import Login from "./Routes/Auth";
-import { action as loginAction} from "./Routes/Auth";
 import App from "./Routes/App";
 import SignUp from "./Routes/SignUp";
 import Carousel, { loader as indexLoader } from "./Routes/Carousel";
@@ -27,7 +26,6 @@ import Carousel, { loader as indexLoader } from "./Routes/Carousel";
       {
         path: '/login',
         element: <Login />,
-        action: loginAction,
         errorElement: <ErrorPage />
       },
       {

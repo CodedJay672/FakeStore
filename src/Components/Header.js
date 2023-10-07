@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,12 +14,12 @@ import MenuItem from '@mui/material/MenuItem';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { NavLink } from "react-router-dom";
 
-const pages = ['home', 'categories', 'about', 'contact'];
-const settings = ['Profile', 'Account', 'LogIn'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const pages = ['home', 'categories', 'about', 'contact'];
+  const settings = ['Profile', 'Account', 'login'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
