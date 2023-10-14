@@ -27,10 +27,13 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({
-      username,
-      password
-    });
+    const user = await login(username, password);
+    if (!user) {
+      alert('Oops! Something went wrong');
+      return;
+    }
+    signIn(user);
+    navigate(-1);
   }
 
   return (
@@ -42,7 +45,6 @@ export default function Login() {
           id="username"
           name="username"
           onChange={handleUsernameChange}
-          value={username}
           placeholder="Email"
           required
         />
@@ -51,7 +53,6 @@ export default function Login() {
           id="password"
           name="password"
           onChange={handlePasswordChange}
-          value={password}
           placeholder="Password"
           required
         />

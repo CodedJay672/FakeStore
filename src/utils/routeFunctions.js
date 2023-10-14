@@ -19,6 +19,21 @@ export async function login(username, password) {
     username,
     password
   });
+  return response.data.token;
+}
 
-  sessionStorage.setItem('token', response.data.token);
+export async function categories() {
+  const response = await client.get('/products/categories');
+  if (!response) {
+    return null;
+  }
+  return response.data;
+}
+
+export async function products(category) {
+  const response = await client.get("/products/category/" + category);
+  if (!response) {
+    return null;
+  }
+  return response.data;
 }

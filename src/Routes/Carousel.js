@@ -7,7 +7,6 @@ import { heroCarousel } from "../utils/routeFunctions";
 import Container from "@mui/material/Container";
 import "./Home.css";
 import Products from "../Components/Products";
-import Footer from "../Components/Footer";
 
 // loader function loads the data we need in the home page
 export async function loader() {
@@ -66,7 +65,7 @@ export default function Carousel() {
       <Slider {...settings}>
         {data.map((product) => {
           return (
-            <div key={product.id} className={navigation.state === 'loading' ? "loading" : "carousel"}>
+            <div key={product.id}>
               <img src={product.image} alt={product.title} />
             </div>
           )
@@ -74,7 +73,6 @@ export default function Carousel() {
       </Slider>
     </Container>
     <Products />
-    <Footer />
     </>
   )
 }

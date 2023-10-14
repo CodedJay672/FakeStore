@@ -3,11 +3,35 @@
   height: 70dvh;
   margin: 5px auto;
   overflow: hidden;
-  object-fit:contain;
+  object-fit: contain;
 }
+
 .loading {
   min-height: 80dvh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
+  color: white;
+}
+
+.pending {
+  font-weight: 600;
+  color: #fff;
+  background-color: #0000002d;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+}
+
+.active {
+  color: #000;
+  background-color: #0000002d;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-left: 3px solid rgba(0, 81, 255, 0.938)
 }
