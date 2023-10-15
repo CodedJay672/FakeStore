@@ -16,19 +16,19 @@
 }
 
 .pending {
-  font-weight: 600;
-  color: #fff;
-  background-color: #0000002d;
+  font-weight: 100;
+  color: #efefef;
+  text-decoration: none;
 }
 
 .link {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .active {
-  color: #000;
-  background-color: #0000002d;
+  color: #fff;
+  background-color: #2e6df78c;
   text-decoration: none;
   display: block;
   width: 100%;

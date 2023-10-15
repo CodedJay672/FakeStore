@@ -10,6 +10,7 @@ import App from "./Routes/App";
 import SignUp from "./Routes/SignUp";
 import Carousel, { loader as indexLoader } from "./Routes/Carousel";
 import Category, { loader as categoryLoader } from "./Routes/Category";
+import Product, { loader as productLoader } from "./Routes/Product";
 
 
  // create a router to load the webpages
@@ -39,6 +40,12 @@ import Category, { loader as categoryLoader } from "./Routes/Category";
         element: <Category />,
         errorElement: <ErrorPage />,
         loader: categoryLoader
+      },
+      {
+        path: '/products/:id',
+        element: <Product />,
+        errorElement: <ErrorPage />,
+        loader: productLoader
       }
     ]
   },

@@ -37,3 +37,11 @@ export async function products(category) {
   }
   return response.data;
 }
+
+export async function product(id) {
+  const response = await client.get("/products/" + id);
+  if (!response) {
+    return null;
+  }
+  return response.data;
+}

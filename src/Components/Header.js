@@ -12,9 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { NavLink} from "react-router-dom";
 import { userContext } from "../Routes/App";
 import { categories } from "../utils/routeFunctions";
+import { NavLink } from "react-router-dom";
 
 
 function ResponsiveAppBar() {
@@ -59,7 +59,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -105,13 +105,10 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <NavLink
-                      to={page === 'home' ? '/' : '/category/'+page}
-                      className={({ isActive, isPending }) => {
-                        return isActive ? "active" : isPending ? "pending" : "link";
-                      }}
-                    >
-                        {page.toUpperCase()}
+                    <NavLink to={page === 'home' ? '/' : `/category/${page.toLowerCase()}`} className={({ isActive, isPending }) => {
+                      return isActive ? "active" : isPending ? "pending" : "link";
+                    }}>
+                      {page.toUpperCase()}
                     </NavLink>
                   </Typography>
                 </MenuItem>
@@ -139,14 +136,12 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                variant="contained"
-                href={page === 'home' ? '/' : `/category/${page}`}
-              >
-                {page}
+              <Button key={page} color="inherit">
+                <NavLink to={page === 'home' ? '/' : `/category/${page.toLowerCase()}`} className={({ isActive, isPending }) => {
+                  return isActive ? "active" : isPending ? "pending" : "link";
+                }}>
+                  {page.toUpperCase()}
+                </NavLink>
               </Button>
             ))}
           </Box>

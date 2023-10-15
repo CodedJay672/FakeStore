@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from 'react-slick';
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { heroCarousel } from "../utils/routeFunctions";
@@ -20,7 +20,7 @@ export async function loader() {
 
 export default function Carousel() {
   const data = useLoaderData();
-  const navigation = useNavigation();
+  const navigate = useNavigate();
   
   const settings = {
     dots: true,
@@ -65,7 +65,7 @@ export default function Carousel() {
       <Slider {...settings}>
         {data.map((product) => {
           return (
-            <div key={product.id}>
+            <div key={product.id} className="carousel" onClick={() => navigate(`/products/${product.id}`)}>
               <img src={product.image} alt={product.title} />
             </div>
           )
