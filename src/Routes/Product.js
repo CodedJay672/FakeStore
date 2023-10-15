@@ -1,6 +1,6 @@
 import React from "react";
 import { product } from "../utils/routeFunctions";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -8,6 +8,7 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
+import { CircularProgress } from "@mui/material";
 
 export const loader = ({ params }) => {
   const { id } = params;
@@ -20,6 +21,23 @@ export const loader = ({ params }) => {
 
 export default function Product() {
   const product = useLoaderData();
+  const navigate = useNavigation();
+
+  if( navigate.state === 'loading') {
+    return (
+      <Box sx={{
+        width: '100%',
+        height: '70vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+      >
+        <CircularProgress />
+      </Box>
+    )
+  }
+  
   return (
     <Card sx={{
       width: { xs: "90vw", md: "50vw"},
