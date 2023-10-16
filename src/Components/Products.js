@@ -37,7 +37,7 @@ export default function Products() {
     <div className="products">
       {products.map((product) => {
         return (
-          <div key={product.id} className="card product" onClick={() => navigate(`/products/${product.id}`)}>
+          <div key={product.id} className="product" onClick={() => navigate(`/products/${product.id}`)}>
             <img src={product.image} alt={product.title} />
             <h3 className="card-header">{product.title}</h3>
             <p><span className="me-4 p-2 text-bg-primary">{product.category}</span> ${product.price}</p>

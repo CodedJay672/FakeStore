@@ -1,5 +1,6 @@
 import React from "react";
 import './Footer.css';
+import { getDate } from "../utils/routeFunctions";
 
 const about = ['About Us', 'Our Services', 'Our Team'];
 const contact = ['Contact us', 'Facebook', 'Twitter', 'Instagram'];
@@ -26,7 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="copy">
-        <p>copyrigth since 2023</p>
+        <p>copyrigth since {getDate()}</p>
       </div>
     </div>
   )

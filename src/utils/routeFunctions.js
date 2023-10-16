@@ -45,3 +45,15 @@ export async function product(id) {
   }
   return response.data;
 }
+
+export function getDate() {
+  const date = new Date();
+  const year = date.getFullYear();
+  return year;
+}
+
+export function addToCart(id) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(id);
+  localStorage.setItem('cart', JSON.stringify(cart));
+}

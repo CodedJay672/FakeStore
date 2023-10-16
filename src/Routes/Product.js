@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import { CircularProgress } from "@mui/material";
+import { addToCart } from "../utils/routeFunctions";
 
 export const loader = ({ params }) => {
   const { id } = params;
@@ -58,8 +59,7 @@ export default function Product() {
         <Box sx={{
           padding: '5px',
           flexGrow: 1,
-        }}
-        >
+        }}>
           <Typography variant="h2" sx={{
             fontSize: '1.5rem',
             fontWeight: 'bold',
@@ -71,7 +71,11 @@ export default function Product() {
           <Typography variant="subtitle1">Price: ${product.price}</Typography>
         </Box>
         <CardActions>
-          <Button size="small" variant="contained">Add to Cart</Button>
+          <Button size="small" variant="contained" onClick={() => {
+            addToCart(product.id);
+          }}>
+            Add to Cart
+          </Button>
           <Button size ="small" variant="outlined">Buy Now</Button>
         </CardActions>
       </CardContent>

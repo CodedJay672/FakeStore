@@ -35,3 +35,14 @@
   padding: 10px;
   border-left: 3px solid rgba(0, 81, 255, 0.938)
 }
+
+#details {
+  padding: 50px 0;
+}
+
+@media screen and (max-width: 320px) {
+  .link {
+    font-size: 0.8rem;
+    color: #000;
+  }
+}
